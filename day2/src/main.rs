@@ -1,12 +1,7 @@
-use std::{
-  fs::File,
-  io::{BufRead, BufReader}
-};
+use helpers::get_lines;
 
 fn main() {
-  let file: File = File::open("day2.txt").unwrap();
-  let reader: BufReader<File> = BufReader::new(file);
-  let lines = reader.lines();
+  let lines = get_lines("day2.txt");
 
   let matrix1: Vec<i32> = vec![
     4, 8, 3,
@@ -23,8 +18,7 @@ fn main() {
   let mut answer2: i32 = 0;
 
   for i in lines{
-    let j: Vec<i32> = i.unwrap()
-      .trim()
+    let j: Vec<i32> = i.trim()
       .split(' ')
       .map(|s| to_char(s))
       .collect();
